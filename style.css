@@ -14,7 +14,7 @@
     border-style: none;
     border-radius: 30px;
     text-align: center;
-    font-size: 18px;
+    font-size: 15px;
     width: 65px;
     height: 65px;
     margin: 2px;
@@ -44,5 +44,6 @@
 }
 
 body{
+    font-size: 20px;
     background: url('https://images5.alphacoders.com/889/thumb-1920-889488.jpg');
 }
