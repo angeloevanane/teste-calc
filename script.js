@@ -46,39 +46,48 @@ function validaOperacao(op) {
             resultado = calculaPotencia(parseFloat(inputElement.value));
             resetaOperacao();
             atualizaResultado();
+            ativaOperacoes();
             break;
 
         case "multiplicacao":
             resultado = calculaMultiplicacao(parseFloat(inputElement.value));
             resetaOperacao();
             atualizaResultado();
+            ativaOperacoes();
             break;
         
         case "subtracao":
             resultado = calculaSubtracao(parseFloat(inputElement.value));
             resetaOperacao();
             atualizaResultado();
+            ativaOperacoes();
             break;
 
         case "adicao":
             resultado = calculaAdicao(parseFloat(inputElement.value));
             resetaOperacao();
             atualizaResultado();
+            ativaOperacoes();
             break;
 
         case "divisao":
             resultado = calculaDivisao(parseFloat(inputElement.value));
             resetaOperacao();
             atualizaResultado();
+            ativaOperacoes();
             break;
     
         default:
             alert("Operação Invalida!")
+            ativaOperacoes();
             break;
     }
 } //recebe a operacao e chama a funcao de calculo correspondente
 
 function executarFuncao(funcao){
+
+    desativaOperacoes(funcao);
+
     switch (funcao) {
 
         case "√":
@@ -92,6 +101,7 @@ function executarFuncao(funcao){
 
         case "C":
             limpar();
+            ativaOperacoes();
             break;                          //TERMINADO
 
         case "÷":
@@ -153,6 +163,27 @@ function atualizaResultado() {
         inputElement.value = resultado;
     }
 } //atribui o 'resultado' para o valor do 'inputElement'
+
+function desativaOperacoes() {
+
+    let arrayBotoes = document.getElementsByClassName("botaoFuncao");
+
+    for (let i = 0; i < arrayBotoes.length; i++) {
+
+        if ( !isNaN(arrayBotoes[i].value)) {
+            arrayBotoes[i].disabled = true;
+        }        
+    }
+} //desativa os botoes de operacoes
+
+function ativaOperacoes() {
+
+    let arrayBotoes = document.getElementsByClassName("botaoFuncao");
+
+    for (let i = 0; i < arrayBotoes.length; i++) {
+            arrayBotoes[i].disabled = false;
+    }
+} //ativa os botoes de operacoes
 
 function incluirValor(valor){
 
