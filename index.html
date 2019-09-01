@@ -1,9 +1,9 @@
- <!DOCTYPE h"ml>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Calculadora</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://github.com/angeloevanane/teste-calc/commits/master/style.css">
 </head>
 <body>
     <div id="calculadora">
@@ -11,31 +11,31 @@
         <input type="text" id="inputCalculadora" maxlength="18" disabled>
         
         <div class="linhas" id="primeiraLinha">
-            <button class="botoes botaoFuncao" onclick="validaBotao('√')">√</button>
-            <button class="botoes botaoFuncao" onclick="validaBotao('^')">^</button>
+            <button class="botoes" class="botaoFuncao" onclick="validaBotao('√')">√</button>
+            <button class="botoes" class="botaoFuncao" onclick="validaBotao('^')">^</button>
             <button class="botoes" onclick="validaBotao('C'); zeraValor() ">Limpar</button>
-            <button class="botoes botaoFuncao" onclick="validaBotao('÷')">÷</button>
+            <button class="botoes" class="botaoFuncao" onclick="validaBotao('÷')">÷</button>
         </div>
         
         <div class="linhas" id="segundaLinha">
             <button class="botoes" onclick="validaBotao('7')">7</button>
             <button class="botoes" onclick="validaBotao('8')">8</button>
             <button class="botoes" onclick="validaBotao('9')">9</button>
-            <button class="botoes botaoFuncao" onclick="validaBotao('x')">X</button>
+            <button class="botoes" class="botaoFuncao" onclick="validaBotao('x')">X</button>
         </div>
         
         <div class="linhas" id="terceiraLinha">
             <button class="botoes" onclick="validaBotao('4')">4</button>
             <button class="botoes" onclick="validaBotao('5')">5</button>
             <button class="botoes" onclick="validaBotao('6')">6</button>
-            <button class="botoes botaoFuncao" onclick="validaBotao('-')">-</button>
+            <button class="botoes" class="botaoFuncao" onclick="validaBotao('-')">-</button>
         </div>
         
         <div class="linhas" id="quartaLinha">
             <button class="botoes" onclick="validaBotao('1')">1</button>
             <button class="botoes" onclick="validaBotao('2')">2</button>
             <button class="botoes" onclick="validaBotao('3')">3</button>
-            <button class="botoes botaoFuncao" onclick="validaBotao('+')">+</button>
+            <button class="botoes" class="botaoFuncao" onclick="validaBotao('+')">+</button>
         </div>
         
         <div class="linhas" id="quintaLinha">
@@ -47,6 +47,6 @@
 
     </div>
     
-    <script src="script.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 </html>
