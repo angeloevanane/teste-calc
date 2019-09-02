@@ -92,6 +92,7 @@ function executarFuncao(funcao){
 
         case "√":
             calculaRaiz(parseFloat(inputElement.value));
+            ativaOperacoes();
             break;                          //TERMINADO
 
         case "^":
