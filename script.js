@@ -86,8 +86,6 @@ function validaOperacao(op) {
 
 function executarFuncao(funcao){
 
-    desativaOperacoes(funcao);
-
     switch (funcao) {
 
         case "√":
@@ -98,6 +96,7 @@ function executarFuncao(funcao){
         case "^":
             operacao = "potencia";
             atribuiValor();
+		    desativaOperacoes(funcao);    
             break;                          //TERMINADO
 
         case "C":
@@ -108,21 +107,25 @@ function executarFuncao(funcao){
         case "÷":
             operacao = "divisao";
             atribuiValor();
+		    desativaOperacoes(funcao);    
             break;                          //TERMINADO
 
         case "x":
             operacao = "multiplicacao";
             atribuiValor();
+		    desativaOperacoes(funcao);    
             break;                          //TERMINADO
 
         case "-":
             operacao = "subtracao";
             atribuiValor();
+		    desativaOperacoes(funcao);    
             break;                          //TERMINADO
 
         case "+":
             operacao = "adicao";
             atribuiValor();
+		    desativaOperacoes(funcao);    
             break;                          //TERMINADO
 
         case "±":
