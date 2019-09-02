@@ -1,8 +1,20 @@
-var inputElement = document.querySelector("#inputCalculadora"); //a "telinha" de nossa calculadora
+//Variaveis Globais
+
 var resultado = null; //o valor que será atribuído para o 'inputElement'
 var primeiroValor = false, divisaoPorZero = false;  //indica à funcao 'atribuiValor' se o valor é o primeiro a ser inserido //indica se houve alguma divisao por zero 
 var operacao = null; //recebe a operacao selecionada
 var valor1 = 0; //primeiro valor inserido
+
+//-Variaveis do DOM
+
+var inputElement = document.querySelector("#inputCalculadora"); //a "telinha" de nossa calculadora
+var btnElements = document.querySelectorAll(".botoes"); //botoes
+
+for (let i = 0; i < btnElements.length; i++) { 
+    btnElements[i].onclick = function() {
+        validaBotao(btnElements[i].innerHTML);
+    }
+} //associa as funcoes ao evento 'onclick' dos botoes
 
 
 //Funcoes Auxiliares (usadas como ferramentas e para guiar o calculo)
@@ -90,7 +102,6 @@ function executarFuncao(funcao){
 
         case "√":
             calculaRaiz(parseFloat(inputElement.value));
-            ativaOperacoes();
             break;                          //TERMINADO
 
         case "^":
@@ -99,8 +110,9 @@ function executarFuncao(funcao){
 		    desativaOperacoes(funcao);    
             break;                          //TERMINADO
 
-        case "C":
+        case "Limpar":
             limpar();
+            zeraValor();
             ativaOperacoes();
             break;                          //TERMINADO
 
@@ -148,7 +160,8 @@ function executarFuncao(funcao){
 //Funcoes de Controle (tem influencia direta no 'inputElement')
 
 function inverteSinal() {
-    inputElement.value *= -1;
+    let invertido = inputElement.value *= -1;
+    atualizaInputElement(invertido);
 } //multiplica o valor de 'inputElement' por -1
 
 function limpar() {
@@ -174,7 +187,7 @@ function desativaOperacoes() {
 
     for (let i = 0; i < arrayBotoes.length; i++) {
 
-        if ( !isNaN(arrayBotoes[i].value)) {
+        if ( !isNaN(arrayBotoes[i].value) && arrayBotoes[i].innerHTML != "√") {
             arrayBotoes[i].disabled = true;
         }        
     }
@@ -185,9 +198,13 @@ function ativaOperacoes() {
     let arrayBotoes = document.getElementsByClassName("botaoFuncao");
 
     for (let i = 0; i < arrayBotoes.length; i++) {
-            arrayBotoes[i].disabled = false;
+        arrayBotoes[i].disabled = false;
     }
 } //ativa os botoes de operacoes
+
+function atualizaInputElement(valor) {
+    inputElement.value = valor;
+} //altera o valor de 'inputElement' para o parâmetro passado
 
 function incluirValor(valor){
 
@@ -259,6 +276,6 @@ function calculaAdicao(valor) {
 }
 
 function calculaRaiz(valor) {
-    resultado = Math.sqrt(valor);
-    atualizaResultado();
+    let raiz = Math.sqrt(valor);
+    atualizaInputElement(raiz);
 }
