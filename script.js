@@ -1,7 +1,7 @@
 //Variaveis Globais
 
 var resultado = null; //o valor que será atribuído para o 'inputElement'
-var primeiroValor = false, divisaoPorZero = false;  //indica à funcao 'atribuiValor' se o valor é o primeiro a ser inserido //indica se houve alguma divisao por zero 
+var primeiroValor = false, divisaoPorZero = false;  //indica à funcao 'atribuiValor' se o valor é o primeiro a ser inserido //indica se houve alguma divisao por zero
 var operacao = null; //recebe a operacao selecionada
 var valor1 = 0; //primeiro valor inserido
 
@@ -10,7 +10,7 @@ var valor1 = 0; //primeiro valor inserido
 var inputElement = document.querySelector("#inputCalculadora"); //a "telinha" de nossa calculadora
 var btnElements = document.querySelectorAll(".botoes"); //botoes
 
-for (let i = 0; i < btnElements.length; i++) { 
+for (let i = 0; i < btnElements.length; i++) {
     btnElements[i].onclick = function() {
         validaBotao(btnElements[i].innerHTML);
     }
@@ -44,7 +44,12 @@ function validaBotao(valor){
         //console.log("é número");
         incluirValor(valor);
     } else {
-        //console.log("não é número");   
+        //console.log("não é número");
+
+        if (inputElement.value == 0) {
+            inputElement.value = "0";
+        }
+
         executarFuncao(valor);
     }
 }
@@ -67,7 +72,7 @@ function validaOperacao(op) {
             atualizaResultado();
             ativaOperacoes();
             break;
-        
+
         case "subtracao":
             resultado = calculaSubtracao(parseFloat(inputElement.value));
             resetaOperacao();
@@ -88,7 +93,7 @@ function validaOperacao(op) {
             atualizaResultado();
             ativaOperacoes();
             break;
-    
+
         default:
             alert("Operação Invalida!")
             ativaOperacoes();
@@ -107,7 +112,7 @@ function executarFuncao(funcao){
         case "^":
             operacao = "potencia";
             atribuiValor();
-		    desativaOperacoes(funcao);    
+		    desativaOperacoes(funcao);
             break;                          //TERMINADO
 
         case "Limpar":
@@ -119,25 +124,25 @@ function executarFuncao(funcao){
         case "÷":
             operacao = "divisao";
             atribuiValor();
-		    desativaOperacoes(funcao);    
+		    desativaOperacoes(funcao);
             break;                          //TERMINADO
 
         case "x":
             operacao = "multiplicacao";
             atribuiValor();
-		    desativaOperacoes(funcao);    
+		    desativaOperacoes(funcao);
             break;                          //TERMINADO
 
         case "-":
             operacao = "subtracao";
             atribuiValor();
-		    desativaOperacoes(funcao);    
+		    desativaOperacoes(funcao);
             break;                          //TERMINADO
 
         case "+":
             operacao = "adicao";
             atribuiValor();
-		    desativaOperacoes(funcao);    
+		    desativaOperacoes(funcao);
             break;                          //TERMINADO
 
         case "±":
@@ -147,7 +152,7 @@ function executarFuncao(funcao){
         case "=":
             validaOperacao(operacao);
             break;                          //TERMINADO
-        
+
         default:
             alert("Função não encontrada!");
             break;                          //TERMINADO
@@ -174,7 +179,7 @@ function atualizaResultado() {
             divisaoPorZero = false;
             inputElement.value = "Impossível dividir por zero";
         } else {
-            inputElement.value = "Erro";   
+            inputElement.value = "Erro";
         }
     } else {
         inputElement.value = resultado;
@@ -189,7 +194,7 @@ function desativaOperacoes() {
 
         if ( !isNaN(arrayBotoes[i].value) && arrayBotoes[i].innerHTML != "√") {
             arrayBotoes[i].disabled = true;
-        }        
+        }
     }
 } //desativa os botoes de operacoes
 
@@ -219,7 +224,7 @@ function incluirValor(valor){
     } else {
 
         if (valor == ",") {
-            inputElement.value += ".";            
+            inputElement.value += ".";
         } else {
             inputElement.value += valor;
         }
@@ -229,7 +234,7 @@ function incluirValor(valor){
         } else if ( inputElement.value == "." ){ //insere zero à esquerda
             inputElement.value = "0" + ".";
         }
-    }    
+    }
     //inputElement.focus();
 } //inclue valor ao 'inputElement'
 
@@ -247,7 +252,7 @@ function calculaPotencia(valor){
 function calculaDivisao(valor) {
     resetaOperacao();
     primeiroValor = false;
-    
+
     if (valor == 0) {
         divisaoPorZero = true;
         return NaN;
