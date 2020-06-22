@@ -23,12 +23,13 @@
 }
 
 #inputCalculadora{
+    color: #fff;
     border-style: none;
     border-radius: 5px;
     padding: 5px;
     margin: 10px;
     margin-bottom: 30px;
-    width: 90%;   
+    width: 90%;
     height: 30px;
     text-align: right;
     font-size: 20px;
@@ -38,7 +39,7 @@
     margin-left: 30px;
 }
 
-.botoes:hover { 
+.botoes:hover {
     background-color: rgb(116, 3, 209);
     color: whitesmoke;
 }
